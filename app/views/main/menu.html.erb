@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+
+<html>
+
+<head>
+  <title>GVINT</title>
+</head>
+
+<body class="menu-box">
+
+<div class="logo"></div>
+
+<table class="main-table-box">
+  <tr>
+    <td colspan="2"><div class="menu-floating-button"><%= button_to t(:'.game'), game_sudoku_path, :method => :get, :class => "menu-cancel-button"%></div></td>
+  </tr>
+  <tr>
+    <td colspan="2"><div class="menu-floating-button"><%= button_to t(:'.statistic'), main_statistic_path, :method => :get, :class => "menu-cancel-button"%></div></td>
+  </tr>
+  <tr>
+    <td>
+      <div class="profile-floating-button"><%= button_to "", main_profile_path, :method => :get, :class => "profile"%></div>
+    </td>
+    <td>
+      <div class="profile-floating-button"><%= button_to "", root_path, :method => :get, :class => "back"%></div>
+    </td>
+  </tr>
+</table>
+
+</body>
+
+</html>

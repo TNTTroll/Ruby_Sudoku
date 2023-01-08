@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+
+<html>
+
+<body>
+
+<div class="blur-box">
+  <table>
+    <tr>
+      <td><p class="text header"> <%= t(:log_in) %> </p></td>
+    </tr>
+    <%= form_for(resource, as: resource_name, url: session_path(resource_name), data: {turbo: false}) do |f| %>
+      <tr><td>
+        <div class="field">
+          <%= f.label :email, class:"text" %><br />
+          <%= f.email_field :email, autofocus: true, autocomplete: "email", class:"sign-in-field" %>
+        </div>
+      </td></tr>
+
+      <tr><td>
+        <div class="field">
+          <%= f.label t(:'.password'), class:"text" %><br />
+          <%= f.password_field :password, autocomplete: "current-password", class:"sign-in-field"%>
+        </div>
+      </td></tr>
+
+      <tr><td>
+        <% if devise_mapping.rememberable? %>
+          <div class="field">
+            <%= f.check_box :remember_me, class:"check-box"%>
+            <%= f.label t(:'.remember_me'), class:"small-text" %>
+          </div>
+        <% end %>
+      </td></tr>
+
+      <tr><td>
+        <div class="smaller-floating-button log-in-f-b">
+          <%= f.submit t(:'.log_in_b'), class:"cancel-button"%>
+        </div>
+      </td></tr>
+    <% end %>
+
+    <tr><td>
+      <div class="profile-floating-button l-p-f-b"><%= button_to "", root_path, :method => :get, :class => "back"%></div>
+    </td></tr>
+
+    <tr><td>
+      <%= render "devise/shared/links" %>
+    </td></tr>
+
+  </table>
+</div>
+</body>
+</html>
+

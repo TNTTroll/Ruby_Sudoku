@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+
+<html>
+
+<head>
+  <title>GVINT</title>
+</head>
+
+<body>
+
+<div class="greeting-box">
+  <div class="logo bigger"></div>
+  <p class="text header"><%= t(:'.welcome') %></p>
+  <% if current_user %>
+    <p class="text"><%= t(:'.nice_to_see') %> <%= current_user.email %></p>
+  <% else %>
+    <p class="text"><%= t(:'.to_continue') %></p>
+  <% end %>
+</div>
+
+</body>
+
+</html>

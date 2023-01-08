@@ -1,0 +1,168 @@
+// --------------------------- Imports
+import "@hotwired/turbo-rails"
+import "controllers"
+
+import {scene, camera, renderer, canvas} from './Settings/Camera_Set.js';
+
+import { Board } from './Logic/Board.js';
+import * as S from "./Settings/_SETTINGS.js";
+
+
+// --------------------------- Variables
+let board;
+let placeNum, currentColor = 0, time;
+let mouse = new THREE.Vector2();
+let raycaster = new THREE.Raycaster();
+
+
+// --------------------------- Functions
+function init() {
+    document.getElementById('IdExit').disabled = true;
+    document.addEventListener('mousedown', onMouseDown, false);
+
+    set_light_spots();
+
+    render();
+}
+
+
+// ------------------ Render
+function render() {
+    requestAnimationFrame( render );
+
+    renderer.render( scene, camera );
+}
+
+
+// ------------------ Light
+function set_light_spots() {
+    let spot_light1 = new THREE.SpotLight( S.spot_Light_Color1, .6 );
+    let spot_light2 = new THREE.SpotLight( S.spot_Light_Color2, .6 );
+    let ambient_light = new THREE.AmbientLight( S.spot_Light_Color1, .45);
+
+    let pos_1 = new THREE.Vector3(10, 10, 10);
+    let pos_2 = new THREE.Vector3(-10, -10, -10);
+
+    spot_light2.position.set(pos_2.x, pos_2.y, pos_2.z);
+
+    scene.add(spot_light1);
+    scene.add(spot_light2);
+    scene.add(ambient_light);
+}
+
+
+// ------------------ Window
+window.setNumber = function(number) {
+    if (placeNum)
+        board.find(placeNum, number);
+}
+
+window.setDiff = function(diff) {
+    let label = document.getElementById('IdErrors');
+    let mess = document.getElementById('IdMess');
+    switch (diff) {
+        case 'easy':
+            board = new Board(scene, label, mess, 'easy');
+            break;
+        case 'medium':
+            board = new Board(scene, label, mess, 'medium');
+            break;
+        case 'hard':
+            board = new Board(scene, label, mess, 'hard');
+            break;
+    }
+
+    document.getElementById('Popup').remove();
+}
+
+window.changeSkin = function() {
+    currentColor += 1;
+    unpick();
+
+    board.planes.forEach( plane => plane.material.color = S.calmPlate[currentColor] );
+
+    if (currentColor === S.calmPlate.length) currentColor = 0;
+}
+
+init();
+
+
+// ------------------ Mouse
+function unpick() {
+    let plates = scene.children.filter(x => x.type === 'Mesh');
+    document.getElementById('IdMess').textContent = '';
+
+    plates.forEach (elem => elem.material.color = S.calmPlate[currentColor]);
+}
+
+function onMouseDown(event) {
+    / Not a right mouse click /
+    if (event.button === 2) return false;
+
+    let pos_x = event.clientX - canvas.getBoundingClientRect().left;
+    let pos_y = event.clientY - canvas.getBoundingClientRect().top;
+
+    mouse.x = (pos_x / canvas.clientWidth)  *  2 - .4;
+    mouse.y = (pos_y / canvas.clientHeight) * -2 + 1;
+
+    raycaster.setFromCamera(mouse.clone(), camera);
+
+    let objects = raycaster.intersectObjects(scene.children);
+
+    if (objects[0]) {
+        placeNum = objects[0].object.children[0];
+
+        unpick();
+        placeNum.parent.material.color = S.pickPlate[currentColor];
+    }
+}
+
+// ------------------ Timer
+window.onload = function () {
+    document.getElementById('IdTimer').textContent = '00:00:00';
+    start_timer();
+
+}
+
+window.checkForSolving = function () {
+    if (board.isSolved()) {
+        stop_timer();
+        document.getElementById('IdExit').disabled = false;
+    }
+}
+
+let t, display = document.getElementById('IdTimer');
+let sec = 0, min = 0, hrs = 0;
+
+function tick() {
+    sec++;
+
+    if (sec >= 60) {
+        sec = 0;
+        min++;
+
+        if (min >= 60) {
+            min = 0;
+            hrs++;
+        }
+    }
+}
+
+function show_time() {
+    tick();
+    display.textContent = (hrs > 9 ? hrs : "0" + hrs)
+        + ":" + (min > 9 ? min : "0" + min)
+        + ":" + (sec > 9 ? sec : "0" + sec);
+
+    timer();
+}
+
+function timer() { t = setTimeout(show_time, 1000); }
+
+export function start_timer() { timer(); }
+
+export function stop_timer() {
+    time = sec + min*60 + hrs*3600;
+    display.style.color = 'green';
+    clearTimeout(t);
+}

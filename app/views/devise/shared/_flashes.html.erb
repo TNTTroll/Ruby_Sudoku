@@ -1,0 +1,4 @@
+<% # app/views/shared/_flashes.html.erb %>
+<% flash.each do |key, message| %>
+  <p class="<%= key %>"><%= message %></p>
+<% end %>

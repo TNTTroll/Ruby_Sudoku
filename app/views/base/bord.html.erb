@@ -1,0 +1,8 @@
+<div>
+  <p> <%= t(:'.good_game') %> </p>
+  <p> <%= t(:'.data_updated') %> </p>
+  <p> <%= t(:'.information') %> </p>
+  <p>email: <%= ResultsForUser.find_by_user(current_user.email).user %></p>
+  <p> <%= t(:'.results') %> <%= ResultsForUser.find_by_user(current_user.email).time %></p>
+</div>
+

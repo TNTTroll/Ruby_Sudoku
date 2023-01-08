@@ -1,0 +1,78 @@
+ru:
+  hello: "Hello world"
+
+  static_pages:
+    landing_page:
+      welcome: "ДОБРО ПОЖАЛОВАТЬ!"
+      nice_to_see: "РАДЫ ВАС ВИДЕТЬ, "
+      to_continue: "ЗАРЕГИСТРИРУЙТЕСЬ ИЛИ ВОЙДИТЕ ДЛЯ ПРОДОЛЖЕНИЯ"
+
+  layouts:
+    application:
+      start: "НАЧАТЬ"
+      log_out: "ВЫЙТИ"
+      sign_up: "РЕГИСТРАЦИЯ"
+      log_in: "ВОЙТИ"
+      home: "МЕНЮ"
+
+  main:
+    menu:
+      game: "ИГРА"
+      statistic: "СТАТИСТИКА"
+
+    profile:
+      profile: "ПРОФИЛЬ"
+      created: "создан:"
+      updated: "обновлен:"
+      log_out: "ВЫЙТИ"
+      edit: "ИЗМЕНИТЬ"
+
+    statistic:
+      email: "email"
+      solved: "решено"
+      all_users: "Статистика:"
+
+  game:
+    sudoku:
+      choose_difficulty: "ВЫБЕРИТЕ СЛОЖНОСТЬ"
+      easy: "ЛЕГКО"
+      normal: "НОРМА"
+      hard: "ТЯЖЕЛО"
+      choose_number: "ВЫБЕРИТЕ ЧИСЛО"
+      change_skin: " ЦВЕТ:"
+      skin: "ЦВЕТА"
+      check_sudoku: "ПРОВЕРИТЬ:"
+      solved: "РЕШЕНО"
+      exit: "ВЫХОД"
+      errors: "Ошибки: 0"
+
+  base:
+    bord:
+      good_game: "ХОРОШИЙ РЕЗУЛЬТАТ"
+      data_updated: "ДАННЫЕ УСПЕШНО ОБНОВЛЕНЫ"
+      information: "Информация о пользователе:"
+      results : "Результат:"
+
+  devise:
+    registrations:
+      edit:
+        edit_profile: "ИЗМЕНИТЬ ПРОФИЛЬ"
+        waiting_for_conformation: "Ожидаем инсформацию :"
+        password: "пароль"
+        min_char: "минимум символов"
+        password_confirmation: "подтверждение пароля"
+        current_password: "текущий пароль"
+        cancel_my_accaunt: "Удалить мой аккаунт??"
+        cancel: "УДАЛИТЬ"
+        are_you_sure: "Вы уверены?"
+        confirm: "нам нужно подтверждение данных"
+      new:
+        registration: "РЕГИСТРАЦИЯ"
+        char_min: "минимум символов"
+        signup: "ВОЙТИ"
+    sessions:
+      new:
+        log_in: "ВХОД"
+        password: "Пароль"
+        remember_me: "Запомнить меня"
+        log_in_b: "Войти"

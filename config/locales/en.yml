@@ -1,0 +1,111 @@
+# Files in the config/locales directory are used for internationalization
+# and are automatically loaded by Rails. If you want to use locales other
+# than English, add the necessary files in this directory.
+#
+# To use the locales, use `I18n.t`:
+#
+#     I18n.t "hello"
+#
+# In views, this is aliased to just `t`:
+#
+#     <%= t("hello") %>
+#
+# To use a different locale, set it with `I18n.locale`:
+#
+#     I18n.locale = :es
+#
+# This would use the information in config/locales/es.yml.
+#
+# The following keys must be escaped otherwise they will not be retrieved by
+# the default I18n backend:
+#
+# true, false, on, off, yes, no
+#
+# Instead, surround them with single quotes.
+#
+# en:
+#   "true": "foo"
+#
+# To learn more, please read the Rails Internationalization guide
+# available at https://guides.rubyonrails.org/i18n.html.
+
+en:
+  hello: "Hello world"
+
+  static_pages:
+    landing_page:
+      welcome: "WELCOME!"
+      nice_to_see: "NICE TO SEE YOU, "
+      to_continue: "LOG IN OR SIGN UP TO CONTINUE"
+
+  layouts:
+    application:
+      start: "START"
+      log_out: "LOG OUT"
+      sign_up: "SIGN UP"
+      log_in: "LOG IN"
+      home: "HOME"
+
+  main:
+    menu:
+      game: "GAME"
+      statistic: "STATISTIC"
+
+    profile:
+      profile: "PROFILE"
+      created: "created:"
+      updated: "updated:"
+      log_out: "LOG OUT"
+      edit: "EDIT"
+    statistic:
+      email: "email"
+      solved: "solved"
+      all_users: "Top users:"
+
+
+  game:
+    sudoku:
+      choose_difficulty: "CHOOSE DIFFICULTY"
+      easy: "EASY"
+      normal: "NORMAL"
+      hard: "HARD"
+      choose_number: "CHOOSE NUMBER"
+      change_skin: "Change skin:"
+      skin: "Skins"
+      check_sudoku: "Check sudoku:"
+      solved: "Solved"
+      exit: "Exit"
+      errors: "Errors: 0"
+
+  base:
+    bord:
+      good_game: "GOOD GAME"
+      data_updated: "DATA WAS UPDATED SUCCESSFULLY"
+      information: "Information about user:"
+      results : "happy results:"
+
+  devise:
+    registrations:
+      edit:
+        edit_profile: "EDIT PROFILE"
+        waiting_for_conformation: "Currently waiting confirmation for:"
+        password: "password"
+        min_char: "characters minimum"
+        password_confirmation: "password confirmation"
+        current_password: "current password"
+        cancel_my_accaunt: "Cancel my account?"
+        cancel: "CANCEL"
+        are_you_sure: "Are you sure?"
+        confirm: "we need to confirm your changes"
+      new:
+        registration: "REGISTRATION"
+        char_min: "characters minimum"
+        signup: "SING UP"
+    sessions:
+      new:
+        log_in: "LOG IN"
+        password: "Password"
+        remember_me: "Remember me"
+        log_in_b: "Log in"
+
+

@@ -1,0 +1,61 @@
+
+<div id='Popup' class="popup">
+  <div class="popup-content stat-content">
+
+    <p class="text header" style="margin-top: 20px"><%= t(:'.choose_difficulty') %></p>
+
+    <button onclick="setDiff('easy')" class="diff-button"> <%= t(:'.easy') %> </button>
+    <button onclick="setDiff('medium')" class="diff-button"> <%= t(:'.normal') %> </button>
+    <button onclick="setDiff('hard')" class="diff-button"> <%= t(:'.hard') %> </button>
+
+  </div>
+</div>
+
+<div class="column left">
+  <canvas id='c'></canvas>
+</div>
+
+<div class="column right">
+  <h1 class="text"> <%= t(:'.choose_number') %> </h1>
+
+  <table class="number-table">
+    <tr>
+      <td> <button onclick="setNumber(1)" class="number-button">1</button> </td>
+      <td> <button onclick="setNumber(6)" class="number-button">6</button> </td>
+    </tr>
+    <tr>
+      <td> <button onclick="setNumber(2)" class="number-button">2</button> </td>
+      <td> <button onclick="setNumber(7)" class="number-button">7</button> </td>
+    </tr>
+    <tr>
+      <td> <button onclick="setNumber(3)" class="number-button">3</button> </td>
+      <td> <button onclick="setNumber(8)" class="number-button">8</button> </td>
+    </tr>
+    <tr>
+      <td> <button onclick="setNumber(4)" class="number-button">4</button> </td>
+      <td> <button onclick="setNumber(9)" class="number-button">9</button> </td>
+    </tr>
+    <tr>
+      <td  colspan="2" > <button onclick="setNumber(5)" class="number-button" style="margin-left: 110px">5</button> </td>
+      <td>  </td>
+    </tr>
+    <tr>
+      <td> <p class="small-text" style="color: #CD8043"> <%= t(:'.change_skin') %> </p> </td>
+      <td> <button onclick="changeSkin()" class="nav-button"> <%= t(:'.skin') %> </button> </td>
+    </tr>
+    <tr>
+      <td> <p class="small-text" style="color: #CD8043"> <%= t(:'.check_sudoku') %> </p> </td>
+      <td> <button onclick="checkForSolving()" class="nav-button"> <%= t(:'.solved') %> </button> </button> </td>
+    </tr>
+    <tr>
+      <td colspan="2"> <%= button_to t(:'.exit'), base_bord_path, :method => :get, :id => "IdExit", class:"exit-button"%> </td>
+    </tr>
+  </table>
+
+  <p id="IdMess" class="small-text" style="color: #CD8043"></p>
+  <p id="IdErrors" class="small-text" style="color: #CD8043"> <%= t(:'.errors') %> </p>
+  <p id="IdTimer" class="small-text" style="color: #CD8043"></p>
+
+</div>
+
+

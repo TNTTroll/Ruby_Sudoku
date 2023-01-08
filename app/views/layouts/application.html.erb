@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>SUDOKU</title>
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <%= csrf_meta_tags %>
+    <%= csp_meta_tag %>
+
+    <%= stylesheet_link_tag "application", "data-turbo-track": "reload" %>
+    <%= javascript_importmap_tags %>
+
+
+    <script
+      src="https://cdn.jsdelivr.net/npm/three@0.88.0/build/three.min.js">
+    </script>
+
+    <script
+      src="https://cdn.jsdelivr.net/npm/three@0.88.0/examples/js/loaders/GLTFLoader.min.js">
+    </script>
+
+    <script
+      src="https://cdn.jsdelivr.net/npm/three@0.88.0/examples/js/renderers/Projector.js">
+    </script>
+
+    <script
+      src="https://cdn.jsdelivr.net/npm/three@0.88.0/examples/js/controls/OrbitControls.js">
+    </script>
+
+    <script src="//unpkg.com/three-spritetext"></script>
+
+  </head>
+
+  <body>
+  <table class="upper-box">
+    <% if current_page?(root_path) %>
+      <tr>
+        <% if current_user %>
+          <td><div class="floating-button upper"><%= button_to t(:'.start'), main_menu_path, method: :get, data: {turbo: false}, class:"cancel-button-one "%></div></td>
+          <td><div class="floating-button "><%= button_to t(:'.log_out'), destroy_user_session_path, method: :delete, data: {turbo: false}, class:"cancel-button-one "%></div></td>
+        <% else %>
+          <td><div class="floating-button "><%= button_to t(:'.sign_up'), new_user_registration_path, method: :get, data: {turbo: false}, class:"cancel-button-one "%></div></td>
+          <td><div class="floating-button "><%= button_to t(:'.log_in'), new_user_session_path, method: :get, data: {turbo: false}, class:"cancel-button-one "%></div></td>
+        <% end %>
+        <td><div class="floating-button "><%= button_to t(:'.home'), root_path, method: :get, data: {turbo: false}, class:"cancel-button-one "%></div></td></tr>
+    <% end %>
+  </table>
+    <%= yield %>
+  </body>
+</html>

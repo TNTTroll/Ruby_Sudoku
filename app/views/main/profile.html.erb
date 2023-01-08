@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+
+<html>
+
+<head>
+  <title>PROFILE</title>
+</head>
+
+<body>
+
+<div class="blur-box-one">
+  <table class="profile-table-box">
+    <td colspan="2"><p class ="text header"><%= t(:'.profile') %></p></td>
+    <tr>
+      <td><p class="text header">email:</p></td>
+      <td><p class="text"><%= current_user.email %></p></td>
+    </tr>
+    <tr>
+      <td><p class="text header"><%= t(:'.created') %></p></td>
+      <td><p class="text"><%= current_user.created_at %></p></td>
+    </tr>
+    <tr>
+      <td><p class="text header"><%= t(:'.updated') %></p></td>
+      <td><p class="text"><%= current_user.updated_at %></p></td>
+    </tr>
+    <tr>
+      <td><div class="smaller-floating-button-one prof-f-b"><%= button_to t(:'.log_out'), destroy_user_session_path, method: :delete, data: {turbo: false}, class:"cancel-button-two"%></div></td>
+      <td><div class="smaller-floating-button-one prof-f-b"><%= button_to t(:'.edit'),  '/users/edit/', method: :get, data: { turbo: false }, class:"cancel-button-two"%></div></td>
+    </tr>
+    <tr>
+      <td colspan="2"><div class="profile-floating-button p-f-b"><%= button_to "", main_menu_path, :method => :get, :class => "back"%></div></td>
+    </tr>
+  </table>
+</div>
+
+</body>
+
+</html>
